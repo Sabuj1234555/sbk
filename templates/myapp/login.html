@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particle" style="width: 15px; height: 15px; left: 10%; animation-duration: 12s;"></div>
+    <div class="particle" style="width: 20px; height: 20px; left: 30%; animation-duration: 18s;"></div>
+    <div class="particle" style="width: 10px; height: 10px; left: 50%; animation-duration: 15s;"></div>
+    <div class="particle" style="width: 25px; height: 25px; left: 70%; animation-duration: 20s;"></div>
+    <div class="particle" style="width: 12px; height: 12px; left: 85%; animation-duration: 14s;"></div>
+
+    <!-- Signup/Login Container -->
+    <div class="signup-container">
+        <h2>Login</h2>
+        {% if error %}
+            <p class="message">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+           <p>Create New</p> <a href="{% url 'signup'%}">signup</a>
+        </form>
+    </div>
+</body>
+</html>

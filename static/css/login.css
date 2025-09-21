@@ -1,0 +1,147 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    overflow: hidden;
+}
+
+/* Floating Particles */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    animation: float 15s linear infinite;
+}
+
+/* Particles Animation */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Container */
+.signup-container {
+    position: relative;
+    background: #fff;
+    padding: 35px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 10;
+    transform: scale(0);
+    animation: scaleIn 0.5s forwards;
+}
+
+/* Container Animation */
+@keyframes scaleIn {
+    to { transform: scale(1); }
+}
+
+/* Heading */
+.signup-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Form Fields */
+form p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 14px;
+    background: #667eea;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #5640c2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Error / Success Messages */
+p.message {
+    font-size: 14px;
+    color: red;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 30px 20px;
+    }
+
+    .signup-container h2 {
+        font-size: 24px;
+    }
+
+    form input,
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}

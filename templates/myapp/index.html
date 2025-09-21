@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sbkmusic - YouTube Clone</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>sbkmusic</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for videos..." value="videos">
+            <button id="search-btn">Search</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="video-container" id="video-results">
+            <div class="welcome-message">
+                <h2>Welcome to sbkmusic</h2>
+                <p>Search for videos to get started</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const query = document.getElementById('search-input').value;
+            if (query) {
+                searchVideos(query);
+            }
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = document.getElementById('search-input').value;
+                if (query) {
+                    searchVideos(query);
+                }
+            }
+        });
+
+        function searchVideos(query) {
+            fetch(`/search/?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayVideos(data.videos);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayVideos(videos) {
+            const container = document.getElementById('video-results');
+            container.innerHTML = '';
+
+            if (videos && videos.length > 0) {
+                videos.forEach(video => {
+                    const videoElement = document.createElement('div');
+                    videoElement.className = 'video-item';
+                    videoElement.innerHTML = `
+                        <div class="video-thumbnail">
+                            <img src="${video.thumbnail}" alt="${video.title}">
+                        </div>
+                        <div class="video-details">
+                            <h3>${video.title}</h3>
+                            <p>${video.description.substring(0, 100)}...</p>
+                            <!-- শুধু video-actions অংশ পরিবর্তন করুন -->
+<div class="video-actions">
+    <button class="watch-btn" data-id="${video.id}">Watch</button>
+    <button class="download-btn" data-id="${video.id}">Download Video</button>
+    <button class="download-audio-btn" data-id="${video.id}">Download Audio</button>
+</div>
+
+
+                        </div>
+                    `;
+                    container.appendChild(videoElement);
+                });
+
+                // Add event listeners to buttons
+                document.querySelectorAll('.watch-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const videoId = this.getAttribute('data-id');
+                        watchVideo(videoId);
+                    });
+                });
+
+                document.querySelectorAll('.download-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const videoId = this.getAttribute('data-id');
+                        downloadVideo(videoId);
+                    });
+                });
+
+                document.querySelectorAll('.download-direct-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const videoId = this.getAttribute('data-id');
+                        downloadDirect(videoId);
+                    });
+                });
+
+                document.querySelectorAll('.download-audio-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const videoId = this.getAttribute('data-id');
+                        downloadAudio(videoId);
+                    });
+                });
+            } else {
+                container.innerHTML = '<p>No videos found. Try a different search term.</p>';
+            }
+        }
+
+        function watchVideo(videoId) {
+            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+        }
+
+        function downloadVideo(videoId) {
+            window.location.href = `/download/?video_id=${videoId}`;
+        }
+
+      
+
+        function downloadAudio(videoId) {
+            window.location.href = `/download-audio/?video_id=${videoId}`;
+        }
+    </script>
+</body>
+</html>
