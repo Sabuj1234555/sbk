@@ -13,6 +13,7 @@ django-celery-progress==1.0.5
 djangorestframework==3.16.1
 ffmpeg-python==0.2.0
 future==1.0.0
+git-filter-repo==2.47.0
 idna==3.10
 kombu==5.5.4
 mysql-connector-python==9.4.0
