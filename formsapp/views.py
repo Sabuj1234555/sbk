@@ -9,7 +9,7 @@ def signup(request):
         frm = CustomUserCreationForm(request.POST)
         if frm.is_valid():
             frm.save()
-            return redirect('/admin/')   # success হলে admin এ যাবে
+            return redirect('home')   # success হলে home এ যাবে
     else:
         frm = CustomUserCreationForm()
     return render(request, 'myapp/sign_up.html', {'form': frm})
