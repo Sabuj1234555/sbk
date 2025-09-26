@@ -16,7 +16,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+<<<<<<< HEAD
      'formsapp'
+=======
+     'formsapp',
+     'ai'
+>>>>>>> d105de0 (Your commit message describing the changes)
 ]
 
 MIDDLEWARE = [

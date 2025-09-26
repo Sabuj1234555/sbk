@@ -3,8 +3,399 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Sign Up</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SBK Music</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            bottom: -50px;
+            animation: floatUp linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Signup Container */
+        .signup-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            z-index: 10;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form p {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        form input, form select, form textarea {
+            padding: 14px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+        
+        form input:focus, form select:focus, form textarea:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* Button Styles */
+        button {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        button:hover::after {
+            left: 100%;
+        }
+        
+        /* Message Styles */
+        .message {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            border-left: 4px solid #c62828;
+        }
+        
+        /* Login Link */
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .login-link a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .login-link a:hover {
+            color: #667eea;
+            background-color: #f0f0f0;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 30px 25px;
+                max-width: 450px;
+            }
+            
+            .signup-container h2 {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+            
+            form input, form select, form textarea {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+            
+            button {
+                padding: 14px;
+                font-size: 16px;
+            }
+            
+            .login-link {
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .signup-container {
+                padding: 25px 20px;
+                border-radius: 12px;
+            }
+            
+            .signup-container h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            form p {
+                margin-bottom: 15px;
+            }
+            
+            form label {
+                font-size: 13px;
+            }
+            
+            form input, form select, form textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            button {
+                padding: 14px;
+                font-size: 15px;
+                margin-top: 15px;
+            }
+            
+            .login-link {
+                margin-top: 20px;
+                font-size: 15px;
+            }
+            
+            /* Adjust particles for mobile */
+            .particle {
+                display: none;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .signup-container {
+                padding: 20px 15px;
+            }
+            
+            .signup-container h2 {
+                font-size: 22px;
+            }
+            
+            form input, form select, form textarea {
+                padding: 10px;
+            }
+            
+            button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Animation for form container */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .signup-container {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Improve form layout for Django forms */
+        .helptext {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .errorlist {
+            color: #c62828;
+            font-size: 13px;
+            margin-top: 5px;
+            list-style-type: none;
+            background: #ffebee;
+            padding: 8px;
+            border-radius: 5px;
+            border-left: 3px solid #c62828;
+        }
+        
+        /* Password strength indicator */
+        .password-strength {
+            height: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .weak {
+            background: #ff5252;
+            width: 25%;
+        }
+        
+        .medium {
+            background: #ffb142;
+            width: 50%;
+        }
+        
+        .strong {
+            background: #2ed573;
+            width: 100%;
+        }
+        
+        /* Loading animation for button */
+        .loading {
+            position: relative;
+            color: transparent;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Terms and conditions styling */
+        .terms {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .terms input {
+            margin-right: 10px;
+            width: auto;
+        }
+        
+        .terms label {
+            margin-bottom: 0;
+            text-transform: none;
+            font-weight: normal;
+        }
+    </style>
+>>>>>>> d105de0 (Your commit message describing the changes)
 </head>
 <body>
     <!-- Floating Particles -->
@@ -14,18 +405,100 @@
     <div class="particle" style="width: 25px; height: 25px; left: 70%; animation-duration: 20s;"></div>
     <div class="particle" style="width: 12px; height: 12px; left: 85%; animation-duration: 14s;"></div>
 
+<<<<<<< HEAD
     <!-- Signup/Login Container -->
     <div class="signup-container">
         <h2>singup</h2>
+=======
+    <!-- Signup Container -->
+    <div class="signup-container">
+        <h2>Create Account</h2>
+>>>>>>> d105de0 (Your commit message describing the changes)
         {% if error %}
             <p class="message">{{ error }}</p>
         {% endif %}
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+<<<<<<< HEAD
             <button type="submit">signup</button>
             <p>Login now</p> <a href="{% url 'login'%}">login</a>
         </form>
     </div>
+=======
+            <button type="submit">Sign Up</button>
+            <div class="login-link">
+                <p>Already have an account? <a href="{% url 'login'%}">Login now</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Add loading state to button on form submit
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const button = this.querySelector('button[type="submit"]');
+            button.classList.add('loading');
+            button.disabled = true;
+            
+            // Re-enable button if form submission fails
+            setTimeout(() => {
+                button.classList.remove('loading');
+                button.disabled = false;
+            }, 5000); // 5 seconds timeout
+        });
+        
+        // Improve form styling for Django-generated forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add classes to form elements for better styling
+            const labels = document.querySelectorAll('form label');
+            labels.forEach(label => {
+                label.classList.add('form-label');
+            });
+            
+            const inputs = document.querySelectorAll('form input, form select, form textarea');
+            inputs.forEach(input => {
+                input.classList.add('form-input');
+                
+                // Add placeholder text if not present
+                if (input.type === 'text' && !input.getAttribute('placeholder')) {
+                    if (input.name.includes('username')) {
+                        input.setAttribute('placeholder', 'Choose a username');
+                    } else if (input.name.includes('email')) {
+                        input.setAttribute('placeholder', 'Enter your email');
+                    } else if (input.name.includes('name')) {
+                        input.setAttribute('placeholder', 'Your full name');
+                    }
+                }
+                
+                if (input.type === 'password' && !input.getAttribute('placeholder')) {
+                    input.setAttribute('placeholder', 'Create a password');
+                }
+            });
+            
+            // Add password strength indicator
+            const passwordInputs = document.querySelectorAll('input[type="password"]');
+            passwordInputs.forEach(input => {
+                const strengthIndicator = document.createElement('div');
+                strengthIndicator.className = 'password-strength';
+                input.parentNode.appendChild(strengthIndicator);
+                
+                input.addEventListener('input', function() {
+                    const password = this.value;
+                    let strength = 'weak';
+                    
+                    if (password.length >= 8) {
+                        strength = 'medium';
+                    }
+                    
+                    if (password.length >= 12 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) {
+                        strength = 'strong';
+                    }
+                    
+                    strengthIndicator.className = 'password-strength ' + strength;
+                });
+            });
+        });
+    </script>
+>>>>>>> d105de0 (Your commit message describing the changes)
 </body>
 </html>
