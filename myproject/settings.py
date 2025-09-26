@@ -16,12 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
-<<<<<<< HEAD
-     'formsapp'
-=======
-     'formsapp',
-     'ai'
->>>>>>> d105de0 (Your commit message describing the changes)
+    'formsapp',
+    'ai',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +49,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,9 +73,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Asia/Dhaka'  # এখানে পরিবর্তন করুন
+TIME_ZONE = 'Asia/Dhaka'
 USE_I18N = True
-USE_TZ = True  # বা False করুন যদি সমস্যা থাকে
+USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
