@@ -1,346 +1,63 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SBK AI Chatbot</title>
-<style type="text/css" media="all">
-   * {
-       margin: 0;
-       padding: 0;
-       box-sizing: border-box;
-   }
-   
-   body {
-       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-       min-height: 100vh;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       padding: 15px;
-   }
-   
-   h1 {
-       color: #e74c3c;  
-       font-family: 'Segoe UI', sans-serif;
-       text-align: center;
-       margin-bottom: 20px;
-       font-size: 1.8rem;
-   }
-   
-   h1 span {
-       color: #27ae60;
-       font-weight: bold;
-   }
-   
-   .container {
-       width: 100%;
-       max-width: 800px;
-       height: 90vh;
-       max-height: 700px;
-       background: #BACBA9;
-       border: 2px solid #e74c3c;
-       border-radius: 15px;
-       position: relative;
-       margin: auto;
-       display: flex;
-       flex-direction: column;
-       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-       overflow: hidden;
-   }
-   
-   .chat-header {
-       padding: 20px;
-       background: rgba(255, 255, 255, 0.3);
-       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   }
-   
-   .chat-messages {
-       flex: 1;
-       padding: 20px;
-       overflow-y: auto;
-       display: flex;
-       flex-direction: column;
-       gap: 15px;
-   }
-   
-   .message {
-       max-width: 80%;
-       padding: 12px 18px;
-       border-radius: 18px;
-       font-size: 1rem;
-       line-height: 1.4;
-       position: relative;
-   }
-   
-   .user-message {
-       align-self: flex-end;
-       background: #3498db;
-       color: white;
-       border-bottom-right-radius: 5px;
-   }
-   
-   .bot-message {
-       align-self: flex-start;
-       background: #f1f1f1;
-       color: #333;
-       border-bottom-left-radius: 5px;
-   }
-   
-   .input-area {
-       display: flex;
-       padding: 15px;
-       background: rgba(255, 255, 255, 0.5);
-       border-top: 1px solid rgba(0, 0, 0, 0.1);
-   }
-   
-   #question {
-       flex: 1;
-       height: 50px;
-       padding: 0 20px;
-       background-color: #FFFFFF;
-       border: 2px solid #27ae60;
-       border-radius: 25px;
-       font-size: 1rem;
-       outline: none;
-       transition: all 0.3s;
-   }
-   
-   #question:focus {
-       border-color: #3498db;
-       box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-   }
-   
-   #btn {
-       height: 50px;
-       width: 100px;
-       margin-left: 10px;
-       background: #27ae60;
-       color: white;
-       border: none;
-       border-radius: 25px;
-       font-size: 1rem;
-       font-weight: bold;
-       cursor: pointer;
-       transition: all 0.3s;
-   }
-   
-   #btn:hover {
-       background: #219653;
-       transform: translateY(-2px);
-       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-   }
-   
-   #btn:active {
-       transform: translateY(0);
-   }
-   
-   /* Responsive Design */
-   @media (max-width: 768px) {
-       .container {
-           height: 95vh;
-           max-height: none;
-           border-radius: 10px;
-       }
-       
-       h1 {
-           font-size: 1.5rem;
-       }
-       
-       .message {
-           max-width: 90%;
-       }
-       
-       .input-area {
-           padding: 10px;
-       }
-       
-       #question {
-           height: 45px;
-           font-size: 0.9rem;
-       }
-       
-       #btn {
-           height: 45px;
-           width: 80px;
-           font-size: 0.9rem;
-       }
-   }
-   
-   @media (max-width: 480px) {
-       body {
-           padding: 10px;
-       }
-       
-       .container {
-           height: 100vh;
-           border-radius: 0;
-           border: none;
-       }
-       
-       h1 {
-           font-size: 1.3rem;
-           margin-bottom: 15px;
-       }
-       
-       .chat-header {
-           padding: 15px;
-       }
-       
-       .chat-messages {
-           padding: 15px;
-       }
-       
-       .message {
-           max-width: 95%;
-           padding: 10px 15px;
-           font-size: 0.9rem;
-       }
-       
-       .input-area {
-           padding: 10px;
-       }
-       
-       #question {
-           height: 40px;
-           font-size: 0.85rem;
-           padding: 0 15px;
-       }
-       
-       #btn {
-           height: 40px;
-           width: 70px;
-           font-size: 0.85rem;
-           margin-left: 8px;
-       }
-   }
-   
-   /* Scrollbar styling */
-   .chat-messages::-webkit-scrollbar {
-       width: 6px;
-   }
-   
-   .chat-messages::-webkit-scrollbar-track {
-       background: rgba(0, 0, 0, 0.1);
-       border-radius: 10px;
-   }
-   
-   .chat-messages::-webkit-scrollbar-thumb {
-       background: rgba(0, 0, 0, 0.2);
-       border-radius: 10px;
-   }
-   
-   .chat-messages::-webkit-scrollbar-thumb:hover {
-       background: rgba(0, 0, 0, 0.3);
-   }
+<style>
+body {font-family: Arial; margin:0; background:#f0f0f0;}
+.container {max-width:800px; margin:20px auto; background:white; border-radius:10px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+#chatbox {height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px; border-radius:5px; background:#fafafa;}
+.message {margin:10px 0; padding:10px; border-radius:5px;}
+.user {background:#d1e7dd; text-align:right;}
+.bot {background:#f8d7da; text-align:left;}
+input[type=text]{width:80%; padding:10px; border-radius:5px; border:1px solid #ccc;}
+button {padding:10px 15px; border:none; border-radius:5px; background:#0d6efd; color:white; cursor:pointer;}
+button:hover {background:#0b5ed7;}
+.top-bar {display:flex; justify-content:space-between; margin-bottom:10px;}
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="chat-header">
-            <h1><span>SBK</span>developer AI</h1>
-        </div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                স্বাগতম! আমি SBK AI Chatbot। আপনি কী জানতে চান?
-            </div>
-        </div>
-        
-        <div class="input-area">
-            <input type="text" id="question" placeholder="আপনার প্রশ্নটি লিখুন...">
-            <button id="btn" onclick="askQuestion()">SEND</button>
-        </div>
+<div class="container">
+    <div class="top-bar">
+        <button onclick="newChat()">New Chat</button>
+        <button onclick="syncQA()">Sync DB</button>
     </div>
+    <div id="chatbox"></div>
+    <div style="margin-top:10px;">
+        <input type="text" id="question" placeholder="আপনার প্রশ্ন লিখুন">
+        <button onclick="sendQuestion()">Send</button>
+    </div>
+</div>
 
 <script>
-// DOM লোড হওয়ার পর চ্যাট মেসেজ স্ক্রল করে নিচে নিয়ে যাওয়া
-document.addEventListener('DOMContentLoaded', function() {
-    scrollToBottom();
-});
+let chatbox = document.getElementById("chatbox");
 
-async function askQuestion() {
-    const questionInput = document.getElementById("question");
-    const question = questionInput.value.trim();
-    
-    if (question === "") {
-        return;
-    }
-    
-    // ইউজারের মেসেজ যোগ করা
-    addMessage(question, 'user');
-    
-    // ইনপুট ফিল্ড ক্লিয়ার করা
-    questionInput.value = "";
-    
-    try {
-        // লোডিং ইন্ডিকেটর দেখানো
-        const loadingMessage = addMessage("চিন্তা করা হচ্ছে...", 'bot');
-        
-        // API কল করা
-        const response = await fetch("/ask/", {
-            method: "POST",
-            headers: { 
-                "Content-Type": "application/json", 
-                "X-CSRFToken": getCookie('csrftoken') 
-            },
-            body: JSON.stringify({ question })
-        });
-        
-        // লোডিং মেসেজ সরানো
-        loadingMessage.remove();
-        
-        const data = await response.json();
-        addMessage(data.answer, 'bot');
-    } catch (error) {
-        // এরর হ্যান্ডলিং
-        addMessage("দুঃখিত, কোনো সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।", 'bot');
-        console.error("Error:", error);
-    }
+function newChat(){
+    chatbox.innerHTML = "";
 }
 
-// মেসেজ যোগ করার ফাংশন
-function addMessage(text, sender) {
-    const chatMessages = document.getElementById("chatMessages");
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}-message`;
-    messageDiv.innerText = text;
-    chatMessages.appendChild(messageDiv);
-    
-    // চ্যাট স্ক্রল করে নিচে নিয়ে যাওয়া
-    scrollToBottom();
-    
-    return messageDiv;
+async function syncQA(){
+    let res = await fetch("/ai/sync/");
+    let data = await res.json();
+    alert(data.status);
 }
 
-// চ্যাট স্ক্রল করে নিচে নিয়ে যাওয়ার ফাংশন
-function scrollToBottom() {
-    const chatMessages = document.getElementById("chatMessages");
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+async function sendQuestion(){
+    let question = document.getElementById("question").value;
+    if(!question) return;
 
-// Enter কী প্রেস করলে মেসেজ সেন্ড করা
-document.getElementById("question").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        askQuestion();
-    }
-});
+    chatbox.innerHTML += `<div class="message user">${question}</div>`;
+    document.getElementById("question").value = "";
 
-// CSRF token পাওয়ার ফাংশন
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
+    let res = await fetch("/ai/ask/", {
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({question})
+    });
+    let data = await res.json();
+    chatbox.innerHTML += `<div class="message bot">${data.answer}</div>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
 }
 </script>
 </body>

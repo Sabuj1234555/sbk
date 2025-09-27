@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "model": "ai.qa",
+      "pk": 1,
+      "fields": {
+        "question": "তোমার নাম কি",
+        "answer": "আমার নাম SBK AI চ্যাটবট। আমি আপনার সহায়ক AI।",
+        "category": "general"
+      }
+    },
+    {
+      "model": "ai.qa",
+      "pk": 2,
+      "fields": {
+        "question": "html কি",
+        "answer": "HTML হলো HyperText Markup Language, যা ওয়েবপেজ তৈরি করতে ব্যবহৃত হয়।",
+        "category": "programming"
+      }
+    },
+    {
+      "model": "ai.qa",
+      "pk": 3,
+      "fields": {
+        "question": "পাইথন কি",
+        "answer": "পাইথন একটি জনপ্রিয় প্রোগ্রামিং ভাষা যা সহজে শেখা যায় এবং বহুমুখী কাজে ব্যবহার করা যায়।",
+        "category": "programming"
+      }
+    },
+    {
+      "model": "ai.qa",
+      "pk": 4,
+      "fields": {
+        "question": "javascript কি",
+        "answer": "JavaScript একটি প্রোগ্রামিং ভাষা যা ওয়েবপেজকে ইন্টারেক্টিভ করে তোলে।",
+        "category": "programming"
+      }
+    },
+    {
+      "model": "ai.qa",
+      "pk": 5,
+      "fields": {
+        "question": "ধন্যবাদ",
+        "answer": "আপনাকেও ধন্যবাদ! আপনার সাথে কথা বলে ভালো লাগল।",
+        "category": "general"
+      }
+    }
+  ]
+}

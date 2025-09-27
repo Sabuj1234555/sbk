@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'formsapp',
+    'import_export',
     'ai',
 ]
 

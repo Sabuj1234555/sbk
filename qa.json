@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "তোমার নাম কি",
+      "answer": "আমার নাম SBK AI চ্যাটবট। আমি আপনার সহায়ক AI।",
+      "category": "general"
+    },
+    {
+      "id": 2,
+      "question": "html কি",
+      "answer": "HTML হলো HyperText Markup Language, যা ওয়েবপেজ তৈরি করতে ব্যবহৃত হয়।",
+      "category": "programming"
+    },
+    {
+      "id": 3,
+      "question": "পাইথন কি",
+      "answer": "পাইথন একটি জনপ্রিয় প্রোগ্রামিং ভাষা যা সহজে শেখা যায় এবং বহুমুখী কাজে ব্যবহার করা যায়।",
+      "category": "programming"
+    },
+    {
+      "id": 4,
+      "question": "javascript কি",
+      "answer": "JavaScript একটি প্রোগ্রামিং ভাষা যা ওয়েবপেজকে ইন্টারেক্টিভ করে তোলে।",
+      "category": "programming"
+    },
+    {
+      "id": 5,
+      "question": "ধন্যবাদ",
+      "answer": "আপনাকেও ধন্যবাদ! আপনার সাথে কথা বলে ভালো লাগল।",
+      "category": "general"
+    },
+    {
+      "id": 6,
+      "question": "হ্যালো",
+      "answer": "হ্যালো! আমি SBK AI চ্যাটবট। আপনার কী সাহায্য লাগবে?",
+      "category": "general"
+    },
+    {
+      "id": 7,
+      "question": "তুমি কি করতে পারো",
+      "answer": "আমি নিম্নলিখিত কাজগুলো করতে পারি:\n• প্রশ্নের উত্তর দিতে পারি\n• JSON ফাইল থেকে ডেটা পড়তে পারি\n• বিভিন্ন প্রোগ্রামিং ভাষায় কোড লিখতে পারি\n• নতুন চ্যাট শুরু করতে পারি\n• প্রশ্ন-উত্তর এডিট করতে পারি",
+      "category": "general"
+    },
+    {"question": "html কি", "answer": "HTML হলো HyperText Markup Language, যা ওয়েবপেজ তৈরি করতে ব্যবহৃত হয়।"},
+    {"question": "css কি", "answer": "CSS হলো Cascading Style Sheets, যা ওয়েবপেজের স্টাইল এবং লেআউট নিয়ন্ত্রণ করে।"},
+    {"question": "javascript কি", "answer": "JavaScript হলো প্রোগ্রামিং ভাষা যা ওয়েবপেজকে ইন্টারেক্টিভ করে।"},
+    {"question": "python কি", "answer": "Python একটি জনপ্রিয় প্রোগ্রামিং ভাষা যা সহজে শেখা যায় এবং বহুমুখী কাজে ব্যবহার করা যায়।"},
+    {"question": "django কি", "answer": "Django হলো Python-ভিত্তিক ওয়েব ফ্রেমওয়ার্ক।"},
+    {"question": "programming কি", "answer": "Programming হলো কম্পিউটারকে নির্দেশ দেওয়ার প্রক্রিয়া।"},
+    {"question": "function কি", "answer": "Function হলো কোডের একটি reusable block যা কোনো নির্দিষ্ট কাজ সম্পাদন করে।"},
+    {"question": "loop কি", "answer": "Loop হলো একটি structure যা কোনো কাজ বারবার করার জন্য ব্যবহৃত হয়।"},
+    {"question": "variable কি", "answer": "Variable হলো একটি storage যা ডেটা রাখতে ব্যবহার হয়।"},
+    {"question": "if statement কি", "answer": "If statement হলো condition অনুযায়ী কোড execute করার জন্য ব্যবহার হয়।"}
+]
+  
+}
