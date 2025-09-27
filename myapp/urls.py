@@ -1,9 +1,10 @@
 # myapp/urls.py - এই লাইনটি কমেন্ট আউট বা ডিলিট করুন
 from django.urls import path
 from . import views
+from formsapp.views import signup
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', , name='signup'),
     path('home/', views.index, name='home'),
     path('search/', views.search_videos, name='search_videos'),
     path('download/', views.download_video, name='download_video'),
