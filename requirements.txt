@@ -35,3 +35,4 @@ wcwidth==0.2.13
 wheel==0.45.1
 yt-dlp==2025.9.5
 gunicorn
+django-import-export==4.3.10
