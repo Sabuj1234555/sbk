@@ -1,10 +1,10 @@
 # myapp/urls.py - এই লাইনটি কমেন্ট আউট বা ডিলিট করুন
 from django.urls import path
 from . import views
-from formsapp.views import signup
+from formsapp.views import signup,user_login
 
 urlpatterns = [
-    path('', , name='signup'),
+    path('',  signup, name='signup'),
     path('home/', views.index, name='home'),
     path('search/', views.search_videos, name='search_videos'),
     path('download/', views.download_video, name='download_video'),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('download-audio-fallback/', views.download_audio_fallback, name='download_audio_fallback'),
     # path('download-audio-direct/', views.download_audio_direct, name='download_audio_direct'),  # এই লাইনটি কমেন্ট আউট করুন
     path('test-access/', views.test_video_access, name='test_video_access'),
+    path('login/', user_login, name="login")
 ]
