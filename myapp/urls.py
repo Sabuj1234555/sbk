@@ -1,14 +1,16 @@
+# myapp/urls.py - এই লাইনটি কমেন্ট আউট বা ডিলিট করুন
 from django.urls import path
-from . import views          # current app (myapp) এর views
-from formsapp.views import signup  # formsapp এর views
-from ai.views import ai, ask_question  # ai app এর views
+from . import views
 
 urlpatterns = [
-    path('', signup, name='signup'),                # myapp index
-    path('home/', views.index, name='home'),       # myapp home
+    path('', views.index, name='home'),
+    path('home/', views.index, name='home'),
     path('search/', views.search_videos, name='search_videos'),
     path('download/', views.download_video, name='download_video'),
     path('download-audio/', views.download_audio, name='download_audio'),
-    path('ai/', ai, name='homes'),
-    path('ask/', ask_question, name='ask_question'),
+    path('download-audio-alt/', views.download_audio_alternative, name='download_audio_alternative'),
+    path('download-audio-simple/', views.download_audio_simple, name='download_audio_simple'),
+    path('download-audio-fallback/', views.download_audio_fallback, name='download_audio_fallback'),
+    # path('download-audio-direct/', views.download_audio_direct, name='download_audio_direct'),  # এই লাইনটি কমেন্ট আউট করুন
+    path('test-access/', views.test_video_access, name='test_video_access'),
 ]

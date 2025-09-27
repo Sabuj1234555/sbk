@@ -1,483 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sbkmusic - YouTube Clone</title>
-<<<<<<< HEAD
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
-=======
-    <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .logo h1 {
-            color: #ff0000;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .search-bar {
-            display: flex;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 20px;
-        }
-        
-        #search-input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 2px 0 0 2px;
-            font-size: 16px;
-            outline: none;
-        }
-        
-        #search-input:focus {
-            border-color: #ff0000;
-        }
-        
-        #search-btn {
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-left: none;
-            border-radius: 0 2px 2px 0;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        
-        #search-btn:hover {
-            background-color: #f0f0f0;
-        }
-        
-        /* Main Content */
-        main {
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .welcome-message {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-        
-        .welcome-message h2 {
-            color: #ff0000;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-        
-        .welcome-message p {
-            color: #606060;
-            font-size: 18px;
-        }
-        
-        /* Video Grid */
-        .video-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .video-item {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .video-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            overflow: hidden;
-        }
-        
-        .video-thumbnail img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .video-details {
-            padding: 15px;
-        }
-        
-        .video-details h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .video-details p {
-            color: #606060;
-            font-size: 14px;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        /* Video Actions */
-        .video-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .watch-btn, .download-btn, .download-audio-btn {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        
-        .watch-btn {
-            background-color: #ff0000;
-            color: white;
-        }
-        
-        .watch-btn:hover {
-            background-color: #cc0000;
-        }
-        
-        .download-btn {
-            background-color: #2196F3;
-            color: white;
-        }
-        
-        .download-btn:hover {
-            background-color: #0b7dda;
-        }
-        
-        .download-audio-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .download-audio-btn:hover {
-            background-color: #3d8b40;
-        }
-        
-        /* No Results Message */
-        .no-results {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            grid-column: 1 / -1;
-        }
-        
-        .no-results p {
-            font-size: 18px;
-            color: #606060;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .search-bar {
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
-            }
-            
-            .video-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 15px;
-            }
-            
-            .welcome-message {
-                padding: 30px 15px;
-            }
-            
-            .welcome-message h2 {
-                font-size: 24px;
-            }
-            
-            .welcome-message p {
-                font-size: 16px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            main {
-                padding: 15px;
-            }
-            
-            .video-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .video-details {
-                padding: 12px;
-            }
-            
-            .video-actions {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .watch-btn, .download-btn, .download-audio-btn {
-                flex: 1;
-                min-width: 120px;
-                font-size: 13px;
-                padding: 8px 10px;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .video-actions {
-                flex-direction: column;
-            }
-            
-            .watch-btn, .download-btn, .download-audio-btn {
-                width: 100%;
-            }
-        }
-        
-        /* Loading Animation */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            grid-column: 1 / -1;
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #ff0000;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
->>>>>>> d105de0 (Your commit message describing the changes)
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sbkmusic - YouTube Clone</title>
+<style>
+/* Base Styles */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',Arial,sans-serif;}
+body {background:#f9f9f9; color:#333;}
+header {background:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.logo h1{color:#ff0000; font-size:24px;}
+.search-bar{display:flex; flex:1; max-width:600px; margin:0 20px;}
+#search-input{flex:1; padding:10px; border:1px solid #ddd; border-radius:2px 0 0 2px;}
+#search-btn{padding:10px 20px; border:1px solid #ddd; border-left:none; cursor:pointer; background:#f8f8f8; transition:.3s;}
+#search-btn:hover{background:#eee;}
+main{padding:20px; max-width:1400px; margin:0 auto;}
+.video-container{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px;}
+.video-item{background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.video-thumbnail{position:relative; width:100%; height:0; padding-bottom:56.25%;}
+.video-thumbnail img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
+.video-details{padding:15px;}
+.video-details h3{font-size:16px; margin-bottom:8px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.video-details p{color:#606060; font-size:14px; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.video-actions{display:flex; gap:8px; flex-wrap:wrap;}
+.video-actions button{flex:1; min-width:120px; padding:8px 10px; border:none; border-radius:4px; cursor:pointer; font-size:14px; color:#fff; transition:.3s;}
+.watch-btn{background:#ff0000;}
+.watch-btn:hover{background:#cc0000;}
+.download-btn{background:#2196F3;}
+.download-btn:hover{background:#0b7dda;}
+.download-audio-btn{background:#4CAF50;}
+.download-audio-btn:hover{background:#3d8b40;}
+.download-audio-alt-btn{background:#FF9800;}
+.download-audio-alt-btn:hover{background:#F57C00;}
+.download-audio-simple-btn{background:#9C27B0;}
+.download-audio-simple-btn:hover{background:#7B1FA2;}
+.download-audio-fallback-btn{background:#f44336;}
+.download-audio-fallback-btn:hover{background:#d32f2f;}
+.test-access-btn{background:#607d8b;}
+.test-access-btn:hover{background:#455a64;}
+.loading{text-align:center; padding:40px;}
+.spinner{width:40px; height:40px; border:4px solid rgba(0,0,0,0.1); border-left:4px solid #ff0000; border-radius:50%; animation:spin 1s linear infinite;}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.progress-container{background:#fff; border-radius:8px; padding:15px; margin:10px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.progress-info{display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px;}
+.progress-bar-wrapper{background:#eee; border-radius:4px; overflow:hidden; height:20px;}
+.progress-bar{height:100%; background:linear-gradient(90deg, #4CAF50, #45a049); width:0%; transition:width 0.3s; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:bold;}
+.progress-status{text-align:center; margin-top:5px; font-size:12px; color:#666;}
+.no-results{text-align:center; padding:40px; background:#fff; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.welcome-message{text-align:center; padding:40px; background:#fff; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.05); grid-column:1/-1;}
+.download-options{margin-top:10px; padding:10px; background:#f5f5f5; border-radius:4px;}
+.download-options h4{margin-bottom:5px; font-size:12px; color:#666;}
+.download-buttons{display:flex; gap:5px; flex-wrap:wrap;}
+.download-buttons button{flex:1; min-width:80px; padding:5px 8px; font-size:11px;}
+@media(max-width:768px){.video-container{grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:15px;}}
+@media(max-width:480px){.video-container{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>sbkmusic</h1>
+<header>
+    <div class="logo"><h1>sbkmusic</h1></div>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for videos...">
+        <button id="search-btn">Search</button>
+    </div>
+</header>
+
+<main>
+    <div class="video-container" id="video-results">
+        <div class="welcome-message">
+            <h2>Welcome to sbkmusic</h2>
+            <p>Search for videos to get started</p>
         </div>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search for videos..." value="videos">
-            <button id="search-btn">Search</button>
-        </div>
-    </header>
+    </div>
+</main>
 
-    <main>
-        <div class="video-container" id="video-results">
-            <div class="welcome-message">
-                <h2>Welcome to sbkmusic</h2>
-                <p>Search for videos to get started</p>
-            </div>
-        </div>
-    </main>
+<script>
+const container = document.getElementById('video-results');
+let currentDownloads = new Map();
 
-    <script>
-        document.getElementById('search-btn').addEventListener('click', function() {
-            const query = document.getElementById('search-input').value;
-            if (query) {
-                searchVideos(query);
-            }
-        });
+document.getElementById('search-btn').addEventListener('click', searchHandler);
+document.getElementById('search-input').addEventListener('keypress', function(e){
+    if(e.key==='Enter') searchHandler();
+});
 
-        document.getElementById('search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const query = document.getElementById('search-input').value;
-                if (query) {
-                    searchVideos(query);
-                }
-            }
-        });
+function searchHandler(){
+    const query=document.getElementById('search-input').value;
+    if(!query) return;
+    container.innerHTML='<div class="loading"><div class="spinner"></div></div>';
 
-        function searchVideos(query) {
-<<<<<<< HEAD
-=======
-            const container = document.getElementById('video-results');
-            container.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-            
->>>>>>> d105de0 (Your commit message describing the changes)
-            fetch(`/search/?q=${encodeURIComponent(query)}`)
-                .then(response => response.json())
-                .then(data => {
-                    displayVideos(data.videos);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-<<<<<<< HEAD
-=======
-                    container.innerHTML = '<div class="no-results"><p>Error loading videos. Please try again.</p></div>';
->>>>>>> d105de0 (Your commit message describing the changes)
-                });
-        }
-
-        function displayVideos(videos) {
-            const container = document.getElementById('video-results');
-            container.innerHTML = '';
-
-            if (videos && videos.length > 0) {
-                videos.forEach(video => {
-                    const videoElement = document.createElement('div');
-                    videoElement.className = 'video-item';
-                    videoElement.innerHTML = `
-                        <div class="video-thumbnail">
-<<<<<<< HEAD
-                            <img src="${video.thumbnail}" alt="${video.title}">
-                        </div>
-                        <div class="video-details">
-                            <h3>${video.title}</h3>
-                            <p>${video.description.substring(0, 100)}...</p>
-                            <!-- শুধু video-actions অংশ পরিবর্তন করুন -->
-<div class="video-actions">
-    <button class="watch-btn" data-id="${video.id}">Watch</button>
-    <button class="download-btn" data-id="${video.id}">Download Video</button>
-    <button class="download-audio-btn" data-id="${video.id}">Download Audio</button>
-</div>
-
-
-=======
-                            <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/300x169?text=Thumbnail+Not+Found'">
-                        </div>
-                        <div class="video-details">
-                            <h3>${video.title}</h3>
-                            <p>${video.description ? video.description.substring(0, 100) + '...' : 'No description available'}</p>
-                            <div class="video-actions">
-                                <button class="watch-btn" data-id="${video.id}">Watch</button>
-                                <button class="download-btn" data-id="${video.id}">Download Video</button>
-                                <button class="download-audio-btn" data-id="${video.id}">Download Audio</button>
-                            </div>
->>>>>>> d105de0 (Your commit message describing the changes)
-                        </div>
-                    `;
-                    container.appendChild(videoElement);
-                });
-
-                // Add event listeners to buttons
-                document.querySelectorAll('.watch-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const videoId = this.getAttribute('data-id');
-                        watchVideo(videoId);
-                    });
-                });
-
-                document.querySelectorAll('.download-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const videoId = this.getAttribute('data-id');
-                        downloadVideo(videoId);
-                    });
-                });
-
-<<<<<<< HEAD
-                document.querySelectorAll('.download-direct-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const videoId = this.getAttribute('data-id');
-                        downloadDirect(videoId);
-                    });
-                });
-
-=======
->>>>>>> d105de0 (Your commit message describing the changes)
-                document.querySelectorAll('.download-audio-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const videoId = this.getAttribute('data-id');
-                        downloadAudio(videoId);
-                    });
-                });
+    fetch(`/search/?q=${encodeURIComponent(query)}`)
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.error) {
+                container.innerHTML='<div class="no-results"><p>Error: ' + data.error + '</p></div>';
             } else {
-<<<<<<< HEAD
-                container.innerHTML = '<p>No videos found. Try a different search term.</p>';
-=======
-                container.innerHTML = '<div class="no-results"><p>No videos found. Try a different search term.</p></div>';
->>>>>>> d105de0 (Your commit message describing the changes)
+                displayVideos(data.videos);
             }
-        }
+        })
+        .catch(err=>{
+            console.error(err);
+            container.innerHTML='<div class="no-results"><p>Error loading videos.</p></div>';
+        });
+}
 
-        function watchVideo(videoId) {
-            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-        }
+function displayVideos(videos){
+    container.innerHTML='';
+    if(!videos || videos.length===0){
+        container.innerHTML='<div class="no-results"><p>No videos found.</p></div>';
+        return;
+    }
 
-        function downloadVideo(videoId) {
-            window.location.href = `/download/?video_id=${videoId}`;
-        }
+    videos.forEach(video=>{
+        const div=document.createElement('div');
+        div.className='video-item';
+        div.innerHTML=`
+            <div class="video-thumbnail">
+                <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/300x169?text=No+Thumbnail'">
+            </div>
+            <div class="video-details">
+                <h3>${video.title}</h3>
+                <p>${video.description ? video.description.substring(0,100)+'...' : 'No description'}</p>
+                <div class="video-actions">
+                    <button class="watch-btn" onclick="window.open('https://www.youtube.com/watch?v=${video.id}','_blank')">Watch</button>
+                    <button class="download-btn" onclick="downloadVideo('${video.id}', '${video.title.replace(/'/g, "\\'")}')">Download Video</button>
+                    <button class="download-audio-btn" onclick="downloadAudio('${video.id}', '${video.title.replace(/'/g, "\\'")}')">Audio Standard</button>
+                    <button class="download-audio-alt-btn" onclick="downloadAudioAlt('${video.id}', '${video.title.replace(/'/g, "\\'")}')">Audio Alt</button>
+                    <button class="download-audio-simple-btn" onclick="downloadAudioSimple('${video.id}', '${video.title.replace(/'/g, "\\'")}')">Audio Simple</button>
+                    <button class="download-audio-fallback-btn" onclick="downloadAudioFallback('${video.id}', '${video.title.replace(/'/g, "\\'")}')">Audio Fallback</button>
+                    <button class="test-access-btn" onclick="testAccess('${video.id}')">Test Access</button>
+                </div>
+                <div class="progress-container" id="progress-container-${video.id}" style="display:none;">
+                    <div class="progress-info">
+                        <span id="progress-type-${video.id}">Downloading...</span>
+                        <span id="progress-percent-${video.id}">0%</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar" id="progress-bar-${video.id}" style="width:0%">0%</div>
+                    </div>
+                    <div class="progress-status" id="progress-status-${video.id}">Initializing...</div>
+                </div>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
 
-<<<<<<< HEAD
-      
+function downloadVideo(videoId, title) {
+    startDownload(videoId, 'video', title);
+    fetchWithProgress(`/download/?video_id=${videoId}`, videoId, 'video', title);
+}
 
-=======
->>>>>>> d105de0 (Your commit message describing the changes)
-        function downloadAudio(videoId) {
-            window.location.href = `/download-audio/?video_id=${videoId}`;
-        }
-    </script>
+function downloadAudio(videoId, title) {
+    startDownload(videoId, 'audio', title);
+    fetchWithProgress(`/download-audio/?video_id=${videoId}`, videoId, 'audio', title);
+}
+
+function downloadAudioAlt(videoId, title) {
+    startDownload(videoId, 'audio (alternative)', title);
+    fetchWithProgress(`/download-audio-alt/?video_id=${videoId}`, videoId, 'audio', title);
+}
+
+function downloadAudioSimple(videoId, title) {
+    startDownload(videoId, 'audio (simple)', title);
+    fetchWithProgress(`/download-audio-simple/?video_id=${videoId}`, videoId, 'audio', title);
+}
+
+function downloadAudioFallback(videoId, title) {
+    startDownload(videoId, 'audio (fallback)', title);
+    fetchWithProgress(`/download-audio-fallback/?video_id=${videoId}`, videoId, 'audio', title);
+}
+
+function testAccess(videoId) {
+    fetch(`/test-access/?video_id=${videoId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Video accessible!\\nTitle: ${data.title}\\nFormats: ${data.formats}`);
+            } else {
+                alert('Video not accessible: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Test failed: ' + error.message);
+        });
+}
+
+function startDownload(videoId, type, title) {
+    const container = document.getElementById(`progress-container-${videoId}`);
+    const typeElement = document.getElementById(`progress-type-${videoId}`);
+    const statusElement = document.getElementById(`progress-status-${videoId}`);
+    
+    container.style.display = 'block';
+    typeElement.textContent = `Downloading ${type} - ${title.substring(0, 30)}...`;
+    statusElement.textContent = 'Starting download...';
+    
+    updateProgress(videoId, 0, 'Starting...');
+}
+
+function updateProgress(videoId, percent, status) {
+    const bar = document.getElementById(`progress-bar-${videoId}`);
+    const percentElement = document.getElementById(`progress-percent-${videoId}`);
+    const statusElement = document.getElementById(`progress-status-${videoId}`);
+    
+    percent = Math.min(100, Math.max(0, percent));
+    bar.style.width = percent + '%';
+    bar.textContent = percent + '%';
+    percentElement.textContent = percent + '%';
+    statusElement.textContent = status;
+}
+
+function fetchWithProgress(url, videoId, type, title) {
+    currentDownloads.set(videoId, { abortController: new AbortController() });
+    
+    fetch(url, { signal: currentDownloads.get(videoId).abortController.signal })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const contentLength = response.headers.get('Content-Length');
+            if (!contentLength) {
+                updateProgress(videoId, 50, 'Downloading... (size unknown)');
+                return response.blob();
+            }
+            
+            const total = parseInt(contentLength, 10);
+            let loaded = 0;
+            
+            const reader = response.body.getReader();
+            const chunks = [];
+            
+            function read() {
+                return reader.read().then(({ done, value }) => {
+                    if (done) {
+                        updateProgress(videoId, 100, 'Processing file...');
+                        const blob = new Blob(chunks);
+                        return blob;
+                    }
+                    
+                    chunks.push(value);
+                    loaded += value.length;
+                    const percent = Math.round((loaded / total) * 100);
+                    
+                    updateProgress(videoId, percent, `Downloaded: ${formatBytes(loaded)} / ${formatBytes(total)}`);
+                    
+                    return read();
+                });
+            }
+            
+            return read();
+        })
+        .then(blob => {
+            if (blob.size === 0) {
+                throw new Error('Downloaded file is empty');
+            }
+            
+            updateProgress(videoId, 100, 'Creating download link...');
+            
+            // Create download link
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `${slugify(title)}.${type === 'video' ? 'mp4' : 'mp3'}`;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            updateProgress(videoId, 100, 'Download completed!');
+            
+            // Hide progress after 3 seconds
+            setTimeout(() => {
+                const container = document.getElementById(`progress-container-${videoId}`);
+                container.style.display = 'none';
+                updateProgress(videoId, 0, 'Ready');
+            }, 3000);
+        })
+        .catch(error => {
+            if (error.name === 'AbortError') {
+                updateProgress(videoId, 0, 'Download cancelled');
+            } else {
+                console.error('Download error:', error);
+                updateProgress(videoId, 0, `Error: ${error.message}`);
+                
+                // Show error for 5 seconds then hide
+                setTimeout(() => {
+                    const container = document.getElementById(`progress-container-${videoId}`);
+                    container.style.display = 'none';
+                }, 5000);
+            }
+        });
+}
+
+// Utility function to format bytes
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+    
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+// Utility function to slugify filename
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}
+
+// Cancel download function
+function cancelDownload(videoId) {
+    if (currentDownloads.has(videoId)) {
+        currentDownloads.get(videoId).abortController.abort();
+        currentDownloads.delete(videoId);
+        updateProgress(videoId, 0, 'Download cancelled');
+        
+        setTimeout(() => {
+            const container = document.getElementById(`progress-container-${videoId}`);
+            container.style.display = 'none';
+        }, 2000);
+    }
+}
+</script>
 </body>
 </html>
